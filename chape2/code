@@ -12,17 +12,18 @@ def classify(inX,dataSet,labels,k):#inX是你要输入的要分类的“坐标�
     ataSetSize是重复4遍，后面的1保证重复完了是4行，而不是一行里有四个一样的），然后再减去dataSet，是为了求两点的距离，先要坐标相减，
     这个就是坐标相减  
 
-    sqDiffMat = diffMat**2
+    sqDiffMat = diffMat**2#上一行得到了坐标相减，然后这里要(x1-x2)^2，要求乘方  
     sqDistance = sqDiffMat.sum(axis=1)
     distance = sqDistance**0.5
-    sortedDistIndicies = distance.argsort()
+    sortedDistIndicies = distance.argsort()#argsort是排序，将元素按照由小到大的顺序返回下标，比如([3,1,2]),它返回的就是([1,2,0])  
     classCount = {}
     for i in range(k):
         voteIlabel = labels[sortedDistIndicies[i]]
-        classCount[voteIlabel] = classCount.get(voteIlabel,0)+1
-    print(classCount)
+        classCount[voteIlabel] = classCount.get(voteIlabel,0)+1#get是取字典里的元素，如果之前这个voteIlabel是有的，
+        那么就返回字典里这个voteIlabel里的值，如果没有就返回0（后面写的），这行代码的意思就是算离目标点距离最近的k个点的类别，这个点是哪个类别哪个类别就加1  
+    #print(classCount)
     sortedClassCount = sorted(classCount.items(),key=op.itemgetter(1),reverse = True)
-    print(sortedClassCount)
-    print(classCount.items())
-    print(op.itemgetter(1))
+    #print(sortedClassCount)
+    #print(classCount.items())
+    #print(op.itemgetter(1))
     return sortedClassCount[0][0]
