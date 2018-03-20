@@ -26,3 +26,11 @@ array([[0, 0, 0, 0, 0, 0]])
 >>> numpy.tile([0,0],(2,3))<span style="font-family: Arial, Helvetica, sans-serif;">#在列方向上重复[0,0]3次，行2次</span>  
 array([[0, 0, 0, 0, 0, 0],  
        [0, 0, 0, 0, 0, 0]])  
+
+
+sum():
+c = np.array([[0, 2, 1], [3, 5, 6], [0, 1, 1]])
+print c.sum()
+print c.sum(axis=0)
+print c.sum(axis=1)
+结果分别是：19, [3 8 8], [ 3 14  2]
