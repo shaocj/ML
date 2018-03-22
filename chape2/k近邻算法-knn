@@ -1,4 +1,6 @@
-import numpy as np
+#2018.3.22
+
+mport numpy as np
 import operator as op
 def createDateSet():
     group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])
