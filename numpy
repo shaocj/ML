@@ -58,3 +58,39 @@ print f(4)
 Python中使用lambda的话，写成这样
 g = lambda x : x**2
 print g(4)
+
+
+字典(Dictionary) items()方法:
+Python 字典(Dictionary) items() 函数以列表返回可遍历的(键, 值) 元组数组
+语法
+items()方法语法：
+dict.items()
+实例：
+dict = {'Google': 'www.google.com', 'Runoob': 'www.runoob.com', 'taobao': 'www.taobao.com'}
+ 
+print "字典值 : %s" %  dict.items()
+ 
+# 遍历字典列表
+for key,values in  dict.items():
+    print key,values
+以上实例输出结果为：
+字典值 : [('Google', 'www.google.com'), ('taobao', 'www.taobao.com'), ('Runoob', 'www.runoob.com')]
+Google www.google.com
+taobao www.taobao.com
+Runoob www.runoob.com
+
+python中的operator.itemgetter函数：
+operator.itemgetter函数
+operator模块提供的itemgetter函数用于获取对象的哪些维的数据，参数为一些序号。
+>>> import operator as op
+>>> a=[('j','a',15),('ja','b',12),('jan','c',10)]
+>>> b=op.itemgetter(1)
+>>> b(a)
+('ja', 'b', 12)
+>>> b=op.itemgetter(1,0)
+>>> b(a)
+(('ja', 'b', 12), ('j', 'a', 15))
+>>> b=op.itemgetter(1,2)
+>>> b(a)
+(('ja', 'b', 12), ('jan', 'c', 10))
+要注意，operator.itemgetter函数获取的不是值，而是定义了一个函数，通过该函数作用到对象上才能获取值。
