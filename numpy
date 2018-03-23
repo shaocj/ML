@@ -94,3 +94,17 @@ operator模块提供的itemgetter函数用于获取对象的哪些维的数据�
 >>> b(a)
 (('ja', 'b', 12), ('jan', 'c', 10))
 要注意，operator.itemgetter函数获取的不是值，而是定义了一个函数，通过该函数作用到对象上才能获取值。
+
+range(start, end, step)，返回一个list对象，起始值为start，终止值为end，但不含终止值，步长为step。只能创建int型list。
+arange(start, end, step)，与range()类似，但是返回一个array对象。需要引入import numpy as np，并且arange可以使用float型数据。
+>>> import numpy as np
+>>> range(1,10,2)
+[1, 3, 5, 7, 9]
+>>> np.arange(1,10,2)
+array([1, 3, 5, 7, 9])
+>>> range(1,5,0.5)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: range() integer step argument expected, got float.
+>>> np.arange(1,5,0.5)
+array([ 1. ,  1.5,  2. ,  2.5,  3. ,  3.5,  4. ,  4.5])
