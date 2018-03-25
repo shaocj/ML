@@ -108,3 +108,26 @@ Traceback (most recent call last):
 TypeError: range() integer step argument expected, got float.
 >>> np.arange(1,5,0.5)
 array([ 1. ,  1.5,  2. ,  2.5,  3. ,  3.5,  4. ,  4.5])
+
+Python3 split()方法:
+split()通过指定分隔符对字符串进行切片，如果参数num 有指定值，则仅分隔 num 个子字符串
+以下实例展示了split()函数的使用方法：
+#!/usr/bin/python3
+str = "this is string example....wow!!!"
+print (str.split( ))
+print (str.split('i',1))
+print (str.split('w'))
+以上实例输出结果如下：
+['this', 'is', 'string', 'example....wow!!!']
+['th', 's is string example....wow!!!']
+['this is string example....', 'o', '!!!']
+
+
+#注意：pyplot的方式中plt.subplot()参数和面向对象中的add_subplot()参数和含义都相同
+
+#注意：xlabel()和set_xlabel()区别
+1、fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.set_xlabel('Percentage of Time Spent Playing Video Games')
+2、import matplotlib.pyplot as plt
+plt.xlabes('Percentage of Time Spent Playing Video Games')
