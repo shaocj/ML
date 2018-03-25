@@ -2,6 +2,7 @@
 
 mport numpy as np
 import operator as op
+
 def createDateSet():
     group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])
     labels = ['A','A','B','B']
@@ -29,3 +30,65 @@ def classify(inX,dataSet,labels,k):#inX是你要输入的要分类的“坐标�
     #print(classCount.items())
     #print(op.itemgetter(1))
     return sortedClassCount[0][0]
+#收集数据：文本
+#准备数据
+def file2matrix(filename):
+    love_dictionary = {'largeDoses': 3, 'smallDoses': 2, 'didntLike': 1}
+    fr = open(filename)
+    arrayOLines = fr.readlines()
+    numberOfLines = len(arrayOLines)
+    returnMat = np.zeros((numberOfLines,3))
+    classLabelVector = []
+    index = 0
+    for line in arrayOLines:
+        line = line.strip()
+        listFromLine = line.split('\t')
+        returnMat[index,:] = listFromLine[0:3]
+        if (listFromLine[-1].isdigit()):
+            classLabelVector.append(int(listFromLine[-1]))
+        else:
+            classLabelVector.append(love_dictionary.get(listFromLine[-1]))
+        index += 1
+    return returnMat,classLabelVector
+    #分析数据：可视化
+    #准备数据-归一化
+    #在处理不同取值范围的特征值时，我们通常采用的方法是将数值归一化，如将取值范围处理为0到1或者-1到1之间。
+    newValue=(oldValue-min)/(max-min),autoNorm自动将数字特征值转化为0到1的区间
+    #归一化特征值
+    def autoNorm(dataSet):
+    minVals = dataSet.min(0)
+    maxVals = dataSet.max(0)
+    ranges = maxVals - minVals
+    normDataSet = np.zeros(np.shape(dataSet))
+    m = np.shape(dataSet)[0]
+    normDataSet = dataSet - np.tile(minVals,(m,1))
+    normDataSet = normDataSet/np.tile(ranges,(m,1))
+    return normDataSet,ranges,minVals
+    
+    #测试算法
+    #使用错误率来检测分类器性能，定义一个计数器变量每次分类器错误的分类数据计数器加1，计数器结果处理数据点总数即是错误率，下列函数就是测试分类器效果
+    def datingClassTest():
+    hoRation = 0.10
+    datingDataMat, datingLabels = file2matrix('datingTestSet.txt')
+    normMat, ranges, minVals = autoNorm(datingDataMat)
+    m = np.shape(normMat)[0]
+    numTestVecs = int(m*hoRation)
+    errorCount = 0.0
+    for i in range(numTestVecs):
+        classifierResult = classify(normMat[i,:],normMat[numTestVecs:m,:],datingLabels[numTestVecs:m],3)
+        print("the classifier came back with:%d,the real answer is : %d"% (classifierResult,datingLabels[i]))
+        if (classifierResult != datingLabels[i]):errorCount += 1.0
+    print("the total error rate is : %f "%(errorCount/float(numTestVecs)))
+    #使用算法
+    def classifyPerson():
+    resultList = ['not at all', 'in small doses', 'in large doses']
+    percentTats = float(input(\
+                                  "percentage of time spent playing video games?"))
+    ffMiles = float(input("frequent flier miles earned per year?"))
+    iceCream = float(input("liters of ice cream consumed per year?"))
+    datingDataMat, datingLabels = file2matrix('datingTestSet2.txt')
+    normMat, ranges, minVals = autoNorm(datingDataMat)
+    inArr = np.array([ffMiles, percentTats, iceCream, ])
+    classifierResult = classify0((inArr - \
+                                  minVals)/ranges, normMat, datingLabels, 3)
+    print("You will probably like this person: %s" % resultList[classifierResult - 1])
