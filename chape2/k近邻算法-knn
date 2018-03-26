@@ -9,7 +9,8 @@ def createDateSet():
     return group, labels
 def classify(inX,dataSet,labels,k):#inX是你要输入的要分类的“坐标”，dataSet是上面createDataSet的array，
 就是已经有的，分类过的坐标，label是相应分类的标签，k是KNN，k近邻里面的k
-    dataSetSize = dataSet.shape[0]#dataSetSize是sataSet的行数，用上面的举例就是4行  
+    #距离计算
+    dataSetSize = shape（dataSet）[0]#dataSetSize是sataSet的行数，用上面的举例就是4行  
 
     diffMat = np.tile(inX,(dataSetSize,1))-dataSet #前面用tile，把一行inX变成4行一模一样的（tile有重复的功能，
     ataSetSize是重复4遍，后面的1保证重复完了是4行，而不是一行里有四个一样的），然后再减去dataSet，是为了求两点的距离，先要坐标相减，
@@ -19,29 +20,38 @@ def classify(inX,dataSet,labels,k):#inX是你要输入的要分类的“坐标�
     sqDistance = sqDiffMat.sum(axis=1)
     distance = sqDistance**0.5
     sortedDistIndicies = distance.argsort()#argsort是排序，将元素按照由小到大的顺序返回下标，比如([3,1,2]),它返回的就是([1,2,0])  
+    #选择距离最小的k个点
     classCount = {}
     for i in range(k):
         voteIlabel = labels[sortedDistIndicies[i]]
         classCount[voteIlabel] = classCount.get(voteIlabel,0)+1#get是取字典里的元素，如果之前这个voteIlabel是有的，
         那么就返回字典里这个voteIlabel里的值，如果没有就返回0（后面写的），这行代码的意思就是算离目标点距离最近的k个点的类别，这个点是哪个类别哪个类别就加1  
     #print(classCount)
+    #排序
     sortedClassCount = sorted(classCount.items(),key=op.itemgetter(1),reverse = True)
     #print(sortedClassCount)
     #print(classCount.items())
     #print(op.itemgetter(1))
     return sortedClassCount[0][0]
+    
+    
+    
 #收集数据：文本
+
 #准备数据
 def file2matrix(filename):
+    #得到文件行数
     love_dictionary = {'largeDoses': 3, 'smallDoses': 2, 'didntLike': 1}
     fr = open(filename)
     arrayOLines = fr.readlines()
     numberOfLines = len(arrayOLines)
+    #创建3行3列的0矩阵
     returnMat = np.zeros((numberOfLines,3))
+    #解析文件数据到列表
     classLabelVector = []
     index = 0
     for line in arrayOLines:
-        line = line.strip()
+        line = line.strip()#返回移除字符串头尾指定的字符生成的新字符串
         listFromLine = line.split('\t')
         returnMat[index,:] = listFromLine[0:3]
         if (listFromLine[-1].isdigit()):
@@ -50,7 +60,9 @@ def file2matrix(filename):
             classLabelVector.append(love_dictionary.get(listFromLine[-1]))
         index += 1
     return returnMat,classLabelVector
-    #分析数据：可视化
+    
+#分析数据：可视化
+
     #准备数据-归一化
     #在处理不同取值范围的特征值时，我们通常采用的方法是将数值归一化，如将取值范围处理为0到1或者-1到1之间。
     newValue=(oldValue-min)/(max-min),autoNorm自动将数字特征值转化为0到1的区间
@@ -79,6 +91,8 @@ def file2matrix(filename):
         print("the classifier came back with:%d,the real answer is : %d"% (classifierResult,datingLabels[i]))
         if (classifierResult != datingLabels[i]):errorCount += 1.0
     print("the total error rate is : %f "%(errorCount/float(numTestVecs)))
+    
+    
     #使用算法
     def classifyPerson():
     resultList = ['not at all', 'in small doses', 'in large doses']
