@@ -87,14 +87,14 @@ def file2matrix(filename):
     newValue=(oldValue-min)/(max-min),autoNorm自动将数字特征值转化为0到1的区间
     #归一化特征值
     def autoNorm(dataSet):
-    minVals = dataSet.min(0)
-    maxVals = dataSet.max(0)
-    ranges = maxVals - minVals
-    normDataSet = np.zeros(np.shape(dataSet))
-    m = np.shape(dataSet)[0]
-    normDataSet = dataSet - np.tile(minVals,(m,1))
-    normDataSet = normDataSet/np.tile(ranges,(m,1))
-    return normDataSet,ranges,minVals
+        minVals = dataSet.min(0)
+        maxVals = dataSet.max(0)
+        ranges = maxVals - minVals
+        normDataSet = np.zeros(np.shape(dataSet))
+        m = np.shape(dataSet)[0]
+        normDataSet = dataSet - np.tile(minVals,(m,1))
+        normDataSet = normDataSet/np.tile(ranges,(m,1))
+        return normDataSet,ranges,minVals
     
     #测试算法
     #使用错误率来检测分类器性能，定义一个计数器变量每次分类器错误的分类数据计数器加1，计数器结果处理数据点总数即是错误率，下列函数就是测试分类器效果
