@@ -87,44 +87,46 @@ def file2matrix(filename):
     newValue=(oldValue-min)/(max-min),autoNorm自动将数字特征值转化为0到1的区间
     #归一化特征值
     def autoNorm(dataSet):
-        minVals = dataSet.min(0)
-        maxVals = dataSet.max(0)
+        minVals = dataSet.min(0)#取出数据集中的最小值
+        maxVals = dataSet.max(0)#取出数据集中的最大值
         ranges = maxVals - minVals
-        normDataSet = np.zeros(np.shape(dataSet))
-        m = np.shape(dataSet)[0]
-        normDataSet = dataSet - np.tile(minVals,(m,1))
-        normDataSet = normDataSet/np.tile(ranges,(m,1))
-        return normDataSet,ranges,minVals
+        normDataSet = np.zeros(np.shape(dataSet))#初始化一个矩阵，该矩阵和所给数据集维度相同用于存放归一化之后的数据
+        m = np.shape(dataSet)[0]#取出数据集的行数
+        normDataSet = dataSet - np.tile(minVals,(m,1))#这里tile()函数创建了一个以min_value为值的m行列向量，
+        然后计算oldValue-min_value###
+        normDataSet = normDataSet/np.tile(ranges,(m,1))#特征值相除得到归一化后的数值
+        return normDataSet,ranges,minVals#返回归一化后的数据
     
     #测试算法
-    #使用错误率来检测分类器性能，定义一个计数器变量每次分类器错误的分类数据计数器加1，计数器结果处理数据点总数即是错误率，下列函数就是测试分类器效果
+    #使用错误率来检测分类器性能，定义一个计数器变量每次分类器错误的分类数据计数器加1，计数器结果处理
+    数据点总数即是错误率，下列函数就是测试分类器效果##
     def datingClassTest():
-    hoRation = 0.10
-    datingDataMat, datingLabels = file2matrix('datingTestSet.txt')
-    normMat, ranges, minVals = autoNorm(datingDataMat)
-    m = np.shape(normMat)[0]
-    numTestVecs = int(m*hoRation)
-    errorCount = 0.0
-    for i in range(numTestVecs):
-        classifierResult = classify(normMat[i,:],normMat[numTestVecs:m,:],datingLabels[numTestVecs:m],3)
-        print("the classifier came back with:%d,the real answer is : %d"% (classifierResult,datingLabels[i]))
-        if (classifierResult != datingLabels[i]):errorCount += 1.0
-    print("the total error rate is : %f "%(errorCount/float(numTestVecs)))
+        hoRation = 0.10
+        datingDataMat, datingLabels = file2matrix('datingTestSet.txt')
+        normMat, ranges, minVals = autoNorm(datingDataMat)
+        m = np.shape(normMat)[0]
+        numTestVecs = int(m*hoRation)
+        errorCount = 0.0
+        for i in range(numTestVecs):
+            classifierResult = classify(normMat[i,:],normMat[numTestVecs:m,:],datingLabels[numTestVecs:m],3)
+             print("the classifier came back with:%d,the real answer is : %d"% (classifierResult,datingLabels[i]))
+            if (classifierResult != datingLabels[i]):errorCount += 1.0
+        print("the total error rate is : %f "%(errorCount/float(numTestVecs)))
     
     
     #使用算法
     def classifyPerson():
-    resultList = ['not at all', 'in small doses', 'in large doses']
-    percentTats = float(input(\
+        resultList = ['not at all', 'in small doses', 'in large doses']
+        percentTats = float(input(\
                                   "percentage of time spent playing video games?"))
-    ffMiles = float(input("frequent flier miles earned per year?"))
-    iceCream = float(input("liters of ice cream consumed per year?"))
-    datingDataMat, datingLabels = file2matrix('datingTestSet2.txt')
-    normMat, ranges, minVals = autoNorm(datingDataMat)
-    inArr = np.array([ffMiles, percentTats, iceCream, ])
-    classifierResult = classify0((inArr - \
+         ffMiles = float(input("frequent flier miles earned per year?"))
+        iceCream = float(input("liters of ice cream consumed per year?"))
+        datingDataMat, datingLabels = file2matrix('datingTestSet2.txt')
+        normMat, ranges, minVals = autoNorm(datingDataMat)
+        inArr = np.array([ffMiles, percentTats, iceCream, ])
+        classifierResult = classify0((inArr - \
                                   minVals)/ranges, normMat, datingLabels, 3)
-    print("You will probably like this person: %s" % resultList[classifierResult - 1])
+        print("You will probably like this person: %s" % resultList[classifierResult - 1])
     
     
 def img2vector(filename):
