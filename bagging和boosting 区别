@@ -1,4 +1,5 @@
 https://www.cnblogs.com/earendil/p/8872001.html
+https://blog.csdn.net/qq_34896915/article/details/73771287
 Bagging和Boosting的区别（面试准备）
 Baggging 和Boosting都是模型融合的方法，可以将弱分类器融合之后形成一个强分类器，而且融合之后的效果会比最好的弱分类器更好。
 
