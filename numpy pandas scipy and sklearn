@@ -1,0 +1,50 @@
+Python数据分析-初识numpy、pandas、scipy、matplotlib和Scikit-Learn等数据处理库
+1.numpy- 支持多维数组与矩阵的科学计算器包
+
+功能：常用功能16条
+
+a. ndarray-n维数组/矢量的操作。
+
+b. 支持高级大量的n维数组与矩阵的运算。
+
+c. 针对数组运算提供大量的数学函数库。
+
+2.scipy-配合numpy完成对矩阵的计算，因此依赖于numpy，且含多个子模块
+
+功能：常用15个函数
+
+a. 标准导入方式-由于scipy中的函数基本都是numpy的主函数，因此通常不用import scipy
+
+1 import numpy as np
+2 from scipy import stats #导入统计功能
+b.一些常用功能模块
+
+包括统计,优化,整合,线性代数模块,傅里叶变换,信号和图像处理,常微分方程求解器等等。
+
+3.pandas-建立在numpy之上
+
+a.标注导入方式
+
+1 import numpy as np
+2 import pandas as pd
+b.n维数组的创建和操作
+
+Series（对映一维数组），DataFrame（对映二维数组），Panel（对映三维数组），Panel4D（对映四维数组），PanelND（多维）等数据结构，常用的是Series和DataFrame。
+
+4.matplotlib-数据的可视化，用于画图操作，内包含多个模块
+
+功能：绘制散点图、条形图等二维图、pyplot等常用模块
+
+a.标注导入方式-依赖于numpy
+
+1 import numpy as np
+2 import matplot as plt
+b. statsmodel可以补充scipy.stats，而且支持时间序列
+
+ 5.Scikit-Learn-包含大量机器学习算法、数据集
+
+功能：Python开发的机器学习库，是数据挖掘方便的工具，需要在NumPy和SciPy基础上安装。
+
+a.导入算法方式
+
+1 from sklearn import linear_model#导入线性回归模型
