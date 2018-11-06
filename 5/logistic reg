@@ -1,0 +1,16 @@
+1、load_txt()函数用法numpy.loadtxt
+https://www.cnblogs.com/pyxiaomangshe/p/7888961.html
+https://www.cnblogs.com/hecc/p/8480532.html
+
+2、scipy.optimize模块用法
+https://blog.csdn.net/unixtch/article/details/78545382
+
+3、sklearn.preprocessing模块（数据预处理）
+PloynomialFeatures()函数用于生成多项式特征
+http://sklearn.apachecn.org/cn/0.19.0/modules/preprocessing.html#preprocessing(sklearn库中文文档)
+
+4、pandas学习
+complaints = pd.read_csv(u'/home/hadoop/下载/pandas-cookbook-master/data/311-service-requests.csv')
+complaints.head(5)＃显示前５行数据
+如果我们只想选择complaint type和borough这两个列的信息不需要其他列，pandas可以很容易做到这一点：
+complaints[['Complaint Type', 'Borough']][:10]#查看前10行数据
