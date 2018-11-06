@@ -14,3 +14,9 @@ complaints = pd.read_csv(u'/home/hadoop/下载/pandas-cookbook-master/data/311-s
 complaints.head(5)＃显示前５行数据
 如果我们只想选择complaint type和borough这两个列的信息不需要其他列，pandas可以很容易做到这一点：
 complaints[['Complaint Type', 'Borough']][:10]#查看前10行数据
+
+5、matplotlib 学习
+    pyplot模块的内部保存了当前图表以及当前子图等信息。当前的图表和子图可以使用plt.gcf()和plt.gca()获得，分别表示"Get Current Figure"和"Get Current Axes"。
+在pyplot模块中，许多函数都是对当前的Figure或Axes对象进行处理。比如说：    plt.plot()实际上会通过plt.gca()获得当前的Axes对象ax，然后再调用ax.plot()方
+法实现真正的绘图。
+https://blog.csdn.net/pipisorry/article/details/37742423
