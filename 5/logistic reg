@@ -1,4 +1,17 @@
-1、load_txt()函数用法numpy.loadtxt
+sigmod函数
+##numpy
+import numpy as np
+y=1/(1+np.exp(-x))
+#scipy
+from scipy.special import expit,logit
+y=expit(x)##因为expit(x)=1/(1+exp(-x))
+
+
+1、load_txt()函数用法numpy.loadtxt pandas.read_csv
+#保存数据到filename
+x = pd.read_csv("data3out.csv",names=['W','X','Y','Z'])
+x.to_csv('filename')
+#loadtxt生成二维数组
 https://www.cnblogs.com/pyxiaomangshe/p/7888961.html
 https://www.cnblogs.com/hecc/p/8480532.html
 
@@ -20,3 +33,20 @@ complaints[['Complaint Type', 'Borough']][:10]#查看前10行数据
 在pyplot模块中，许多函数都是对当前的Figure或Axes对象进行处理。比如说：    plt.plot()实际上会通过plt.gca()获得当前的Axes对象ax，然后再调用ax.plot()方
 法实现真正的绘图。
 https://blog.csdn.net/pipisorry/article/details/37742423
+    plt.scatter()函数用法
+https://blog.csdn.net/qq_38486203/article/details/80578260  
+     ##加标签
+     axes.set_xlabel(label_x)
+    axes.set_ylabel(label_y)
+    ##显示图例
+    Axes.legend(*args, **kwargs)
+     axes.legend(frameon= True, fancybox = False)#frameon图例是否加边界框，fancybox边框周围是否启用圆边,
+     facecolor背景填充颜色，edgecolor边框线颜色
+6、numpy.c_和r_
+np.r_是按列连接两个矩阵，就是把两矩阵上下相加，要求列数相等，类似于pandas中的concat()。
+np.c_是按行连接两个矩阵，就是把两矩阵左右相加，要求行数相等，类似于pandas中的merge()。
+https://blog.csdn.net/yj1556492839/article/details/79031693
+
+7、numpy size函数
+a.size=np.size(a)
+https://blog.csdn.net/qq_25436597/article/details/79079435
