@@ -100,6 +100,7 @@ https://blog.csdn.net/liuweiyuxiang/article/details/78220080
 https://blog.csdn.net/you_are_my_dream/article/details/53493752
 
 14、np.reshape
+np.reshape(()),zeros(()),ones(())
 https://docs.scipy.org/doc/numpy/reference/generated/numpy.reshape.html#numpy-reshape
 
 14、numpy.meshgrid()
