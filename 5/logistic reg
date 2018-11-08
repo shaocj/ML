@@ -163,3 +163,7 @@ for 循环使用 enumerate
 0 one
 1 two
 2 three
+
+20、取小数点后面几位
+np.round(0.888,2)
+0.89
