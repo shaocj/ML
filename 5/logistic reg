@@ -136,3 +136,13 @@ https://blog.csdn.net/tiange_xiao/article/details/79755793
 
 17.plt.subplots()
 https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html?highlight=subplots#matplotlib.pyplot.subplots
+
+18、import numpy as np
+In[0]:
+A = np.array([[1,2],[2,4]])
+B = [[1,2],[2,4]]
+print(type(A))
+print(type(B))
+Out[0]:
+<class 'numpy.ndarray'>
+<class 'list'>
