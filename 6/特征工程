@@ -124,3 +124,14 @@ data.head()
 
 5、python中type dtype astype 的用法
 http://www.cnblogs.com/fuhang/p/8045973.html
+
+
+6、timedelta64()
+https://docs.scipy.org/doc/numpy/reference/arrays.datetime.html
+https://www.jianshu.com/p/336cd77d9914
+
+7、pandas的groupby（）函数用法（数据聚合与分组）
+https://blog.csdn.net/qq_24753293/article/details/78338263
+其中ix[]、iloc[]、loc[]用法：
+https://blog.csdn.net/sinat_25873421/article/details/80634846（在这里面分别使用loc、iloc、ix 索引多行的数:
+[0:1]修改为[0:2]）
