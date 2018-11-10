@@ -131,7 +131,12 @@ https://docs.scipy.org/doc/numpy/reference/arrays.datetime.html
 https://www.jianshu.com/p/336cd77d9914
 
 7、pandas的groupby（）函数用法（数据聚合与分组）
-https://blog.csdn.net/qq_24753293/article/details/78338263
+	https://blog.csdn.net/qq_24753293/article/details/78338263
 其中ix[]、iloc[]、loc[]用法：
-https://blog.csdn.net/sinat_25873421/article/details/80634846（在这里面分别使用loc、iloc、ix 索引多行的数:
-[0:1]修改为[0:2]）
+	https://blog.csdn.net/sinat_25873421/article/details/80634846（在这里面分别使用loc、iloc、ix 索引多行的
+	数:[0:1]修改为[0:2]）
+其中numpy.random.rand()/randn()/randint()/random_integers()/choice()/seed()用法
+ 注：randn（）函数返回一个或一组样本，具有标准正态分布。标准正态分布又称为u分布，是以0为均值、以1为标准差的正态分布，
+ 记为N（0，1）。
+https://blog.csdn.net/u012149181/article/details/78913167
+https://www.jb51.net/article/130058.htm
