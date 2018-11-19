@@ -167,3 +167,6 @@ for 循环使用 enumerate
 20、取小数点后面几位
 np.round(0.888,2)
 0.89
+
+21、optimize
+https://blog.csdn.net/sinat_17697111/article/details/81534935
