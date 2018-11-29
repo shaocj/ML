@@ -6,3 +6,7 @@ pandas 的value_counts()函数可以对Series里面的每个值进行计数并�
 https://blog.csdn.net/qq_20412595/article/details/79921849
 3、Series.plot()
 https://blog.csdn.net/jinlong_xu/article/details/70175107
+
+4、pandas.DataFrame.apply()
+
+https://www.cnblogs.com/paranoia/p/6196865.html
