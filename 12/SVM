@@ -1,0 +1,9 @@
+1、from sklearn.svm import SVC 
+SVC参数解释
+https://blog.csdn.net/gamer_gyt/article/details/51265347
+
+2、sklearn库中fit_transform和transform
+https://blog.csdn.net/quiet_girl/article/details/72517053
+
+3\tight_layout()
+https://www.jianshu.com/p/91eb0d616adb
