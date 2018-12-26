@@ -284,3 +284,8 @@ https://www.cnblogs.com/lliuye/p/9451903.html
 通常可以通过随机设置不用的参数，比如对模型参数加入小范围的随机扰动，从而产生差别较大的个体学习器。在使用交叉验证法（GridSearch 网格搜索）来确定基学
 习器的参数时，实际上就是用不同的参数训练出来了多个学习器，然后从中挑选出效果最好的学习器。集成学习相当于将所有这些学习器利用起来了。随机森林学习器
 就结合了数据样本的扰动及输入属性的扰动。
+
+GBDT面试粗看:
+https://blog.csdn.net/tinkle181129/article/details/79681702
+https://www.cnblogs.com/pinard/p/6140514.html
+
