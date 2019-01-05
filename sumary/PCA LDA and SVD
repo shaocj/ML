@@ -99,6 +99,8 @@ https://blog.csdn.net/u012679707/article/details/80529252
 http://www.cnblogs.com/pinard/p/6244265.html
 
 SVD奇异值分解：（看10天）
+http://www.cnblogs.com/pinard/p/6251584.html
+https://blog.csdn.net/xiaocong1990/article/details/54909126/
 可以发现，求特征值必须要求矩阵是方阵，而求奇异值对任意矩阵都可以。。不过，特征值分解也有很多的局限，比如说变换的矩阵必须是方阵。
 选取奇异值个数k 策略：
 （1）保留矩阵中90%（或其他比例）的能量信息；
