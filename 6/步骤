@@ -1,0 +1,36 @@
+1、导入数据
+2、时间戳处理
+3、特征向量化/特征提取sklearn.feature_extraction.DictVectorizer,区分连续值和非连续值分别放到两个dict
+4、标准化连续值特征，最基本的当然是标准化，让连续值属性处理过后均值为0，方差为1， preprocessing.StandardScaler()
+  类别特征编码  preprocessing.OneHotEncoder
+ 5、离散特征和连续特征组合起来，np.concatenate
+ 
+ 工程调优（泰坦尼克号）
+ 1、加载数据，查看数据-》data_train.info()和data_train.describe()
+ 2、看看各个属性和最后活着有什么关系-》通过画表最直观。
+    ---通常遇到缺值的情况，我们会有几种常见的处理方式
+      如果缺值的样本占总数比例极高，我们可能就直接舍弃了，作为特征加入的话，可能反倒带入noise，影响最后的结果了；
+      如果缺值的样本适中，而该属性非连续值特征属性(比如说类目属性)，那就把NaN作为一个新类别，加到类别特征中
+      如果缺值的样本适中，而该属性为连续值特征属性，有时候我们会考虑给定一个step(比如这里的age，我们可以考虑每隔2/3岁为一个步长)，然后把它离散化，之后把NaN作为一个type加到属性类目中。
+      有些情况下，缺失的值个数并不是特别多，那我们也可以试着根据已有的值，拟合一下数据，补充上。
+      本例中，后两种处理方式应该都是可行的，我们先试试拟合补全吧(虽然说没有特别多的背景可供我们拟合，这不一定是一个多么好的选择)
+      
+      比如：
+                # fit到RandomForestRegressor之中
+          rfr = RandomForestRegressor(random_state=0, n_estimators=2000, n_jobs=-1)
+          rfr.fit(X, y)
+
+          # 用得到的模型进行未知年龄结果预测
+          predictedAges = rfr.predict(unknown_age[:, 1::])
+
+          # 用得到的预测结果填补原缺失数据
+          df.loc[ (df.Age.isnull()), 'Age' ] = predictedAges
+        随机森林参数调优：https://blog.csdn.net/qq_16633405/article/details/61200502
+        
+      -----需要输入的特征都是数值型特征（比如逻辑斯特回归），我们通常会先对类目型的特征因子化/one-hot编码，使用pandas的”get_dummies”来完成这个工作
+      
+      ------各属性值之间scale差距太大，将对收敛速度造成几万点伤害值！甚至不收敛，比如逻辑斯特回归于梯度下降方法，所以需要对这种情况，做一个scaling，所
+            谓scaling，其实就是将一些变化幅度较大的特征化到[-1,1]之内。
+    3、数据特征处理后选择模型进行拟合，然后预测
+   
+    4、判断下是模型状态欠拟合还是过拟合-用scikit-learn里面的learning_curve来帮我们分辨我们模型的状太，sklearn.learning_curve
