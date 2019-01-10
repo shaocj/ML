@@ -4,9 +4,12 @@ https://www.cnblogs.com/key221/p/9391649.html
 2、pandas的value_counts()
 pandas 的value_counts()函数可以对Series里面的每个值进行计数并且排序，降序
 https://blog.csdn.net/qq_20412595/article/details/79921849
+3、grid()
+https://blog.csdn.net/weixin_41789707/article/details/81035997
 3、Series.plot()
 https://blog.csdn.net/jinlong_xu/article/details/70175107
-
+fig.add_subplot(141)/plt.plot/plt.subplot2grid
+ax3=fig.add_subplot(143, sharey=ax1)#图片共同分享y轴
 4、pandas.DataFrame.apply()
 
 https://www.cnblogs.com/paranoia/p/6196865.html
@@ -24,3 +27,10 @@ https://www.jianshu.com/p/0fe45d4e9542
 
 7、fill_between()
 http://www.cnblogs.com/gengyi/p/9416845.html
+8、设置坐标轴
+ax2.set_xticklabels([u"未获救", u"获救"], rotation=0)，分离设置
+set_xlabel设置整轴
+plt.legend([u"女性/低级舱"], loc='best')#loc是在最好位置
+
+9、df.loc and ix
+https://blog.csdn.net/weixin_38070397/article/details/80431546
