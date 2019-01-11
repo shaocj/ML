@@ -31,6 +31,18 @@
       
       ------各属性值之间scale差距太大，将对收敛速度造成几万点伤害值！甚至不收敛，比如逻辑斯特回归于梯度下降方法，所以需要对这种情况，做一个scaling，所
             谓scaling，其实就是将一些变化幅度较大的特征化到[-1,1]之内。
-    3、数据特征处理后选择模型进行拟合，然后预测
+3、数据特征处理后选择模型进行拟合，然后预测
    
-    4、判断下是模型状态欠拟合还是过拟合-用scikit-learn里面的learning_curve来帮我们分辨我们模型的状太，sklearn.learning_curve
+4、判断下是模型状态欠拟合还是过拟合-用scikit-learn里面的learning_curve来帮我们分辨我们模型的状太，sklearn.learning_curve
+5、进行优化，那如何进行优化呢？哪些地方需要优化？没错做交叉验证--sklearn.cross_validation,cross_validation.cross_val_score(clf, X, y, cv=5)
+# 分割数据
+split_train, split_cv = cross_validation.train_test_split(df, test_size=0.3, random_state=0)
+6、观察哪些特征预测错误，重新拟合一下
+7、做到后期就是模型融合了from sklearn.ensemble import BaggingRegressor
+ -------# fit到BaggingRegressor之中
+     clf = linear_model.LogisticRegression(C=1.0, penalty='l1', tol=1e-6)
+      bagging_clf = BaggingRegressor(clf, n_estimators=10, max_samples=0.8, max_features=1.0, bootstrap=True, bootstrap_features=False, n_jobs=-1)
+      bagging_clf.fit(X, y)
+
+      test = df_test.filter(regex='Age_.*|SibSp|Parch|Fare_.*|Cabin_.*|Embarked_.*|Sex_.*|Pclass.*|Mother|Child|Family|Title')
+      predictions = bagging_clf.predict(test)
