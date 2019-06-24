@@ -14,8 +14,7 @@
     降维/压缩问题则是选择数据具有代表性的特征，在保持数据多样性的基础;上，规避掉大量的特征冗余和噪声，不过这个过程也很有可能会损失一些有用的
 模式信息。经过大量的实践证明，相比较损失的少部分模型性能，维度压缩能够节省大量用于模型训练的时间，这样一来PCA 所带来的模型综合效率变得更为
 划算。
-https://www.cnblogs.com/tbiiann/p/6259459.html
-http://blog.codinglabs.org/articles/pca-tutorial.html
+https://www.cnblogs.com/tbiiann/p/6259459.html或者http://blog.codinglabs.org/articles/pca-tutorial.html
 https://blog.csdn.net/lanchunhui/article/details/53996070
     我们可以认为两者是线性相关的，即知道下单数，我们可以得到付款数，这里很明显这两个属性维度有冗余，去掉下单数，保留付款数，
 明显能再保证原有数据分布和信息的情况下有效简化数据，对于后面的模型学习会缩短不少时间和空间开销。这就是降维，当然并不是
